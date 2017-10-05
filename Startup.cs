@@ -1,9 +1,9 @@
 using System;
-
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using carvecho.Core;
 using carvecho.Persistence;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -26,7 +26,9 @@ namespace carvecho
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors();
+            services.AddScoped<IVehicalRepository, VehicalRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            
             services.AddAutoMapper();
             services.AddDbContext<CarVechoDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
             services.AddMvc();

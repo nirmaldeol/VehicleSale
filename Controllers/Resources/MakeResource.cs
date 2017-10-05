@@ -1,20 +1,17 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using carvecho.Models;
+using carvecho.Core.Models;
 
 namespace carvecho.Controllers.Resources
 {
-    public class MakeResource
+    public class MakeResource : KeyValuePairResource
     {
         public MakeResource()
         {
-            Models = new Collection<ModelResource>();
+            Models = new Collection<KeyValuePairResource>();
 
         }
-        public int Id { get; set; }
-
-        public string Name { get; set; }
-        public ICollection<ModelResource> Models { get; set; }
+        public ICollection<KeyValuePairResource> Models { get; set; }
     }
 
 

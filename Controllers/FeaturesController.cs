@@ -5,7 +5,7 @@ using carvecho.Controllers.Resources;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using carvecho.Models;
+using carvecho.Core.Models;
 
 namespace carvecho.Controllers
 {
@@ -21,11 +21,11 @@ namespace carvecho.Controllers
         }
 
    [HttpGet("/api/features")]
-    public async Task<IEnumerable<FeatureResource>> GetFeatures()
+    public async Task<IEnumerable<KeyValuePairResource>> GetFeatures()
     {
        var features =  await context.Features.ToListAsync();
 
-       return mapper.Map<List<Feature>, List<FeatureResource>>(features);
+       return mapper.Map<List<Feature>, List<KeyValuePairResource>>(features);
 
     }
 

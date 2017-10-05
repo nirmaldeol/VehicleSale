@@ -21,7 +21,7 @@ namespace carvecho.Migrations
                 .HasAnnotation("ProductVersion", "2.0.0-rtm-26452")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("carvecho.Models.Make", b =>
+            modelBuilder.Entity("carvecho.Core.Models.Make", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -33,7 +33,7 @@ namespace carvecho.Migrations
                     b.ToTable("Makes");
                 });
 
-            modelBuilder.Entity("carvecho.Models.Model", b =>
+            modelBuilder.Entity("carvecho.Core.Models.Model", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -51,9 +51,9 @@ namespace carvecho.Migrations
                     b.ToTable("Models");
                 });
 
-            modelBuilder.Entity("carvecho.Models.Model", b =>
+            modelBuilder.Entity("carvecho.Core.Models.Model", b =>
                 {
-                    b.HasOne("carvecho.Models.Make", "Make")
+                    b.HasOne("carvecho.Core.Models.Make", "Make")
                         .WithMany("Models")
                         .HasForeignKey("MakeId")
                         .OnDelete(DeleteBehavior.Cascade);

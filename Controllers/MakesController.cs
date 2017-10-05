@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using carvecho.Controllers.Resources;
-using carvecho.Models;
+using carvecho.Core.Models;
 using carvecho.Persistence;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

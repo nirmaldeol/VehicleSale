@@ -20,7 +20,7 @@ namespace carvecho.Migrations
                 .HasAnnotation("ProductVersion", "2.0.0-rtm-26452")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("carvecho.Models.Feature", b =>
+            modelBuilder.Entity("carvecho.Core.Models.Feature", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -34,7 +34,7 @@ namespace carvecho.Migrations
                     b.ToTable("Features");
                 });
 
-            modelBuilder.Entity("carvecho.Models.Make", b =>
+            modelBuilder.Entity("carvecho.Core.Models.Make", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -48,7 +48,7 @@ namespace carvecho.Migrations
                     b.ToTable("Makes");
                 });
 
-            modelBuilder.Entity("carvecho.Models.Model", b =>
+            modelBuilder.Entity("carvecho.Core.Models.Model", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -66,7 +66,7 @@ namespace carvecho.Migrations
                     b.ToTable("Models");
                 });
 
-            modelBuilder.Entity("carvecho.Models.Vehical", b =>
+            modelBuilder.Entity("carvecho.Core.Models.Vehical", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -95,7 +95,7 @@ namespace carvecho.Migrations
                     b.ToTable("Vehicals");
                 });
 
-            modelBuilder.Entity("carvecho.Models.VehicalFeature", b =>
+            modelBuilder.Entity("carvecho.Core.Models.VehicalFeature", b =>
                 {
                     b.Property<int>("VehicalId");
 
@@ -108,30 +108,30 @@ namespace carvecho.Migrations
                     b.ToTable("VehicalFeature");
                 });
 
-            modelBuilder.Entity("carvecho.Models.Model", b =>
+            modelBuilder.Entity("carvecho.Core.Models.Model", b =>
                 {
-                    b.HasOne("carvecho.Models.Make", "Make")
+                    b.HasOne("carvecho.Core.Models.Make", "Make")
                         .WithMany("Models")
                         .HasForeignKey("MakeId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("carvecho.Models.Vehical", b =>
+            modelBuilder.Entity("carvecho.Core.Models.Vehical", b =>
                 {
-                    b.HasOne("carvecho.Models.Model", "Model")
+                    b.HasOne("carvecho.Core.Models.Model", "Model")
                         .WithMany()
                         .HasForeignKey("ModelId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("carvecho.Models.VehicalFeature", b =>
+            modelBuilder.Entity("carvecho.Core.Models.VehicalFeature", b =>
                 {
-                    b.HasOne("carvecho.Models.Feature", "Feature")
+                    b.HasOne("carvecho.Core.Models.Feature", "Feature")
                         .WithMany()
                         .HasForeignKey("FeatureId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("carvecho.Models.Vehical", "Vehical")
+                    b.HasOne("carvecho.Core.Models.Vehical", "Vehical")
                         .WithMany("Features")
                         .HasForeignKey("VehicalId")
                         .OnDelete(DeleteBehavior.Cascade);

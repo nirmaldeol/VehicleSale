@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace carvecho.Models
+namespace carvecho.Core.Models
 {
     public class Feature
     {

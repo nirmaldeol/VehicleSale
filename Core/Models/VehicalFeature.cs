@@ -1,4 +1,4 @@
-namespace carvecho.Models
+namespace carvecho.Core.Models
 {
     public class VehicalFeature
     {

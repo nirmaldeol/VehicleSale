@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace carvecho.Models
+namespace carvecho.Core.Models
 {
     [Table("Models")]
     public class Model

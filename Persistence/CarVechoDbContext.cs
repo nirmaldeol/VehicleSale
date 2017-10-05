@@ -1,4 +1,4 @@
-using carvecho.Models;
+using carvecho.Core.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace carvecho.Persistence

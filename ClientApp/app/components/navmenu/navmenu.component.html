@@ -17,10 +17,14 @@
                         <span class='glyphicon glyphicon-home'></span> Home
                     </a>
                 </li>
-               
+                <li [routerLinkActive]="['link-active']">
+                        <a [routerLink]="['/vehicals']">
+                            <span class='glyphicon glyphicon-home'></span> Vehicles
+                        </a>
+                    </li>
                 <li [routerLinkActive]="['link-active']">
                         <a [routerLink]="['/vehical/new']">
-                            <span class='glyphicon glyphicon-home'></span> New Vehical
+                            <span class='glyphicon glyphicon-home'></span> New Vehicle
                         </a>
                     </li>
                 <li [routerLinkActive]="['link-active']">
