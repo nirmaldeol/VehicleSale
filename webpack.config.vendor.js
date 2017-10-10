@@ -16,7 +16,7 @@ const treeShakableModules = [
 ];
 const nonTreeShakableModules = [
     'bootstrap',
-    'bootstrap/dist/css/bootstrap.css',
+    './wwwroot/assets/css/bootstrap.flatly.css',
     'es6-promise',
     'es6-shim',
     'event-source-polyfill',

@@ -9,10 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VehicalsComponent implements OnInit {
 
-  allVehicals: Vehical[];
-  vehicals: Vehical[];
+  public readonly PAGE_SIZE = 3;
+
+  queryResult: any = {};
   makes: KeyValuePair[];
-  filter: any = {};
+  query: any = {
+    pageSize: this.PAGE_SIZE
+  };
+  columns = [
+    { title: 'Id' },
+    { title: 'Make', key: 'make', isSortbale: true },
+    { title: 'Model', key: 'model', isSortbale: true },
+    { title: 'Contact Name', key: 'contactName', isSortbale: true },
+    {}
+  ]
+
+
 
   constructor(private vehicalService: VehicalService) { }
 
@@ -20,24 +32,42 @@ export class VehicalsComponent implements OnInit {
     this.vehicalService.getMakes().subscribe(m => {
       this.makes = m;
     })
-    this.vehicalService.getAllVehicals().subscribe(v => {
-      this.vehicals = this.allVehicals = v;
-    })
+    this.populateVehicals();
 
+  }
+
+  populateVehicals() {
+    this.vehicalService.getAllVehicals(this.query).subscribe(result => {
+      this.queryResult = result;
+    })
   }
 
   onFilterChange() {
-    var vehicals = this.allVehicals;
+    this.query.page = 1;
+    console.log(this.query)
+    this.populateVehicals();
 
-    if (this.filter.makeId)
-      vehicals = vehicals.filter(v => v.make.id == this.filter.makeId);
-
-    this.vehicals = vehicals;
   }
 
   resetFilter() {
-    this.filter = {};
-    this.onFilterChange();
+    this.query = {
+      page: 1,
+      pageSize: this.PAGE_SIZE
+    };
+    this.populateVehicals();
+  }
+  sortBy(columnName: any) {
+    if (this.query.sortBy === columnName) {
+      this.query.IsSortAscending = !this.query.IsSortAscending;
+    } else {
+      this.query.sortBy = columnName;
+      this.query.IsSortAscending = true;
+    }
+    this.populateVehicals();
+  }
+  onPageChanged(page: any) {
+    this.query.page = page;
+    this.populateVehicals();
   }
 
 }

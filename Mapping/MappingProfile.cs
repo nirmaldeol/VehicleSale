@@ -11,6 +11,8 @@ namespace carvecho.Mapping
         public MappingProfile()
         {
             //Domain to api Resource
+            CreateMap(typeof(QueryResult<>),typeof(QueryResultResource<>));
+            CreateMap<VehicalQueryResource, VehicalQuery>();
             CreateMap<Make, MakeResource>();
             CreateMap<Make, KeyValuePairResource>();
             CreateMap<Model, KeyValuePairResource>();

@@ -10,7 +10,7 @@
     <div class="form-group">
       <label for="make">Make
         </label>
-      <select class="form-control" name="make" id="make" [(ngModel)]="filter.makeId" (change)="onFilterChange()">
+      <select class="form-control" name="make" id="make" [(ngModel)]="query.makeId" (change)="onFilterChange()">
         <option value=""></option>  
         <option *ngFor="let m of makes" value="{{m.id}}">{{m.name}}</option>  
      
@@ -23,20 +23,28 @@
   <div class="panel-body">
     <table class="table table-striped">
       <tr>
-        <th>Id</th>
-        <th>Make</th>
-        <th>Model</th>
-        <th>Contact Name</th>
-        <th></th>
-      </tr>
-      <tr *ngFor="let v of vehicals">
-        <td>{{v.id}}</td>
-        <td>{{v.make.name}}</td>
-        <td>{{v.model.name}}</td>
-        <td>{{v.contact.name}}</td>
-        <td><a [routerLink]="['/vehical/'+v.id]" class="">View</a></td>
-      </tr>
-    </table>
-  </div>
+        <th *ngFor="let c of columns">
+          <div *ngIf="c.isSortbale" (click)="sortBy(c.key)">
+            {{c.title}}
+            <span *ngIf="query.sortBy == c.key"
+             class="glyphicon"
+              [class.glyphicon-chevron-up]="query.IsSortAscending"
+               [class.glyphicon-chevron-down]="!query.IsSortAscending"></span>
+          </div>
+          <div *ngIf="!c.isSortbale">
+            {{c.title}}
+          </div>
+  </th>
+  </tr>
+  <tr *ngFor="let v of queryResult.items">
+    <td>{{v.id}}</td>
+    <td>{{v.make.name}}</td>
+    <td>{{v.model.name}}</td>
+    <td>{{v.contact.name}}</td>
+    <td><a [routerLink]="['/vehical/'+v.id]" class="">View</a></td>
+  </tr>
+  </table>
+</div>
 
+<pagination [totalItems]="queryResult.totalItems" [pageSize]="query.pageSize" (pageChanged)="onPageChanged($event)"> </pagination>
 </div>

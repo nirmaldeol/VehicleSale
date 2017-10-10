@@ -93,15 +93,15 @@ namespace carvecho.Controllers
             return Ok(vresource);
         }
 
-       [HttpGet]
-        public async Task<IEnumerable<VehicalResource>> GetAllVehical()
+        [HttpGet]
+        public async Task<QueryResultResource<VehicalResource>> GetAllVehical(VehicalQueryResource vehicalQueryResource)
         {
-            var vehicals = await repository.GetAllVehical();
-            // if (vehical == null)
-            //     return NotFound();
+            var filter = mapper.Map<VehicalQueryResource, VehicalQuery>(vehicalQueryResource);
+            var queryResult = await repository.GetAllVehical(filter);
 
-            return mapper.Map<IEnumerable<Vehical>, IEnumerable<VehicalResource>>(vehicals);
-          
+            return mapper.Map<QueryResult<Vehical>, QueryResultResource<VehicalResource>>(queryResult);
+
+
         }
     }
 }

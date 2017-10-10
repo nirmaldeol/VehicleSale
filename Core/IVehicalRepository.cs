@@ -6,7 +6,7 @@ namespace carvecho.Core
 {
     public interface IVehicalRepository
     {
-         Task<IEnumerable<Vehical>> GetAllVehical();
+         Task<QueryResult<Vehical>> GetAllVehical(VehicalQuery filter);
          Task<Vehical> GetVehical(int id, bool includeRelated = true);
           void Add(Vehical vehical);
           void Remove(Vehical vehical) ;
