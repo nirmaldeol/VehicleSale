@@ -1,3 +1,4 @@
+import { ViewVehicalComponent } from './components/view-vehical/view-vehical.component';
 import { PaginationComponent } from './components/shared/pagination/pagination.component';
 
 import { NgModule } from '@angular/core';
@@ -28,7 +29,8 @@ import { CounterComponent } from './components/counter/counter.component';
         HomeComponent,
         VehicalFormComponent,
         VehicalsComponent,
-        PaginationComponent
+        PaginationComponent,
+        ViewVehicalComponent
     ],
     imports: [
         CommonModule,
