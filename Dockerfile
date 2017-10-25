@@ -1,6 +1,7 @@
-FROM microsoft/aspnetcore:2.0
-ARG source
-WORKDIR /app
-EXPOSE 80
-COPY ${source:-obj/Docker/publish} .
-ENTRYPOINT ["dotnet", "carvecho.dll"]
+FROM microsoft/aspnetcore-build  
+ARG source  
+RUN echo "source: $source"  
+WORKDIR /app  
+COPY ${source:-/build} .  
+EXPOSE 80  
+ENTRYPOINT ["dotnet", "carvecho.dll"]  

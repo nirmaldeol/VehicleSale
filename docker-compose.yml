@@ -1,0 +1,24 @@
+version: "3.1"
+services:
+    db:
+     image: mysql:5.7
+     volumes:
+       - db_data:/var/lib/mysql
+     restart: always
+     environment:
+       MYSQL_ROOT_PASSWORD: my_root_password
+       MYSQL_DATABASE: carvecho
+       MYSQL_USER: sa
+       MYSQL_PASSWORD: mycomplexPassword
+    
+    carvecho:
+     depends_on:
+       - db
+     image: carvecho:latest
+     ports:
+       - "8000:80"
+     restart: always
+     environment:
+       ASPNETCORE_ENVIRONMENT: Production
+volumes:
+  db_data:

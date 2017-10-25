@@ -17,6 +17,8 @@
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.0" />
+     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.0" PrivateAssets="All" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.0.0-rtm-10056" />
   </ItemGroup>
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
@@ -44,16 +46,12 @@
     <Exec Command="node node_modules/webpack/bin/webpack.js --env.prod" />
     <!-- Include the newly-built files in the publish output -->
     <ItemGroup>
-      <DistFiles Include="wwwroot\dist\**; ClientApp\dist\**" />
+      <DistFiles Include="wwwroot\dist\**; ClientApp\dist\**;Dockerfile; docker-compose.* ; .dockerignore" />
       <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
         <RelativePath>%(DistFiles.Identity)</RelativePath>
         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       </ResolvedFileToPublish>
     </ItemGroup>
-    <ItemGroup>
-    <None Update="Dockerfile">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  </Target>
+
+</Target>
 </Project>
